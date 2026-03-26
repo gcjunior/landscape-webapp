@@ -90,8 +90,7 @@ export function WhyChooseUsSection() {
               Cleaner results, simpler communication.
             </h3>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              Clear pricing, fast quotes, and dependable visits that keep your
-              curb appeal strong all year.
+              Clear pricing, fast quotes, and dependable visits that keep your curb appeal strong all year.
             </p>
             <a
               href="#contact-us"

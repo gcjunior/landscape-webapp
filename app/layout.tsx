@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Taligado Landscaping | Snow Removal & Lawn Care",
   description:
     "Reliable snow removal and lawn care services with affordable pricing and fast local support.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
