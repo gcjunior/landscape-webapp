@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -38,11 +39,23 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function handleNavClick(href: string) {
+    const id = href.replace("#", "");
+    setActiveSection(id);
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#home" className="font-semibold tracking-tight text-[#1E90FF]">
-          Taligado Landscaping
+        <a href="#home" aria-label="Go to Home" className="flex items-center">
+          <Image
+            src="/logos/ale-solutions-landscape-snow-removal-logo.png"
+            alt="ALE Solutions landscape and snow removal logo"
+            width={38}
+            height={38}
+            priority
+            className="h-9 w-auto"
+          />
         </a>
 
         <button
@@ -66,9 +79,10 @@ export function Navbar() {
                   href={link.href}
                   className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                     isActive
-                      ? "bg-[#1E90FF] text-white"
+                      ? "bg-[linear-gradient(to_right,#00aaff_0%,#009977_100%)] font-bold text-white"
                       : "text-[#333333] hover:bg-[#F5F7FA] hover:text-[#1E90FF]"
                   }`}
+                  onClick={() => handleNavClick(link.href)}
                 >
                   {link.label}
                 </a>
@@ -87,10 +101,13 @@ export function Navbar() {
                   href={link.href}
                   className={`block rounded-md px-3 py-2 text-sm font-medium transition ${
                     activeSection === link.href.replace("#", "")
-                      ? "bg-[#1E90FF] text-white"
+                      ? "bg-[linear-gradient(to_right,#00aaff_0%,#009977_100%)] font-bold text-white"
                       : "text-[#333333] hover:bg-[#F5F7FA] hover:text-[#1E90FF]"
                   }`}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    handleNavClick(link.href);
+                    setMenuOpen(false);
+                  }}
                 >
                   {link.label}
                 </a>

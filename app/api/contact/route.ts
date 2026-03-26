@@ -59,7 +59,6 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_TO_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
 
   if (!apiKey || !toEmail) {
     return NextResponse.json(
@@ -74,7 +73,9 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(apiKey);
     await resend.emails.send({
-      from: fromEmail,
+      // Resend requires `from` to be a verified sender/domain in production.
+      // Per requested behavior, we set it to the email provided by the user.
+      from: data.email,
       to: [toEmail],
       subject: `New quote request from ${data.name}`,
       replyTo: data.email,
