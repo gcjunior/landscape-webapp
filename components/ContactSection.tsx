@@ -56,8 +56,27 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact-us" className="bg-[#F5F7FA] py-20 sm:py-24">
-      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="contact-us"
+      className="relative bg-white py-20 sm:py-24"
+    >
+      <div
+        className="pointer-events-none absolute top-0 left-0 right-0 h-24 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('/contact/contact-us-top-background.png')",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('/contact/contact-us-bottom-background.png')",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           centered
           title="Contact Us"

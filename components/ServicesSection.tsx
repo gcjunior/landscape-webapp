@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { SectionTitle } from "./SectionTitle";
 
 function Topic({ title, items }: { title: string; items: string[] }) {
   return (
@@ -35,11 +34,25 @@ export function ServicesSection() {
       }}
     >
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle
-          centered
-          title="Services"
-          subtitle="Professional seasonal support tailored to your property."
-        />
+        <div className="flex justify-center">
+          <div className="inline-block rounded-xl border border-white/65 bg-white/70 px-6 py-3 shadow-sm backdrop-blur-sm">
+            <h2 className="text-center text-3xl font-bold tracking-tight text-[#333333] sm:text-4xl">
+              Services
+            </h2>
+          </div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <p
+            className="inline-block border border-white/70 text-sm font-medium text-[#1f2937] shadow-sm backdrop-blur-sm sm:text-base"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.6)",
+              padding: "0.3em 1em",
+              borderRadius: "12px",
+            }}
+          >
+            Professional seasonal support tailored to your property.
+          </p>
+        </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           <button
